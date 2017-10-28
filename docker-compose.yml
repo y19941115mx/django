@@ -19,6 +19,6 @@ victor_web:
     - .:/website
   links:
     - victor_mysql:mysql
-
+  command: python manage.py runserver 0.0.0.0:8000
 
 
