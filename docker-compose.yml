@@ -1,6 +1,6 @@
 victor_mysql:
   restart: always
-  image: mysql:5.6
+  image: hub.c.163.com/library/mysql:5.6
   volumes:
     - ./data/:/var/lib/mysql
     - ./conf/mysql/:/etc/mysql/conf.d

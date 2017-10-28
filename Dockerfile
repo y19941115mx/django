@@ -1,4 +1,4 @@
-FROM python:3.5
+FROM hub.c.163.com/library/python:3
 ENV PYTHONUNBUFFERED 1
 
 MAINTAINER victor
