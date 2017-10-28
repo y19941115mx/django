@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Motel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="applijewelleryion/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+
+
+    </script>
+    <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css'/>
+    <!-- Custom Theme files -->
+    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css'/>
+    <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+    <!--webfonts-->
+
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+<!-- banner -->
+<div class="banner">
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="">酒店预定系统</a></h1>
+            </div>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!--/.navbar-header-->
+
+                <!--/.navbar-collapse-->
+            </nav>
+            <form class="form-inline" action="{% url 'logout' %}" method="get">
+                <div class="form-group">
+                    <label for="exampleInputName2">尊敬的 <span class="" style="color: blue">{{ request.user.name | default:'管理员' }}</span>, 您好!</label>
+                    <input class="btn-primary" type="submit" value="登出">
+                </div>
+                <div class="clearfix"></div>
+            </form>
+                <!-- search-scripts -->
+                <script src="{% static 'js/classie.js' %}"></script>
+                <script src="{% static 'js/uisearch.js' %}"></script>
+                <script>
+                    new UISearch(document.getElementById('sb-search'));
+                </script>
+                <!-- //search-scripts -->
+
+        </div>
+    </div>
+    <div class="banner-info">
+        <div class="container">
+            <div class="details-1">
+                <div class="col-md-12 dropdown-buttons">
+
+                    <!---strat-date-piker---->
+                    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}"/>
+                    <script src="{% static 'js/jquery-ui.js' %}"></script>
+                    <script>
+                        $(function () {
+                            $("#datepicker,#datepicker1").datepicker();
+                        });
+                    </script>
+                    <!---/End-date-piker---->
+                    <form name="" id="" action="{% url 'order' %}" method="get">
+                        {% csrf_token %}
+
+                        <input type="hidden" name="flag" value="0"/>
+
+                        <div class="col-md-3 dropdown-button">
+                            <div class="book_date">
+
+                                <input class="date" id="datepicker" name="begin_time" type="text" value="Check In"
+                                       onFocus="this.value = '';"
+                                       onBlur="if (this.value == '') {this.value = 'Check In';}">
+                            </div>
+                        </div>
+                        <div class="col-md-3 dropdown-button">
+                            <div class="book_date">
+
+                                <input class="date1" name="end_time" id="datepicker1" type="text" value="Check Out"
+                                       onFocus="this.value = '';"
+                                       onBlur="if (this.value == '') {this.value = 'Check Out';}">
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 dropdown-button">
+                            <div class="section_1">
+                                <select id="country" onChange="change_country(this.value)" class="frm-field required"
+                                        name="type">
+                                    <option value="0">豪华大床房</option>
+                                    <option value="1">普通大床房</option>
+                                    <option value="2">高级标准间</option>
+                                    <option value="3">普通标准间</option>
+                                    <option value="4">商务套房</option>
+                                    <option value="5">行政豪华套房</option>
+                                    <option value="6">家庭房</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 submit_button ">
+                            <div class="input-group">
+                                <input type="submit" value="订房">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner -->
+<!-- hod -->
+<!--
+<div class="hod">
+    <div class="container">
+        <div class="col-md-6 hod-left">
+            <img src="{% static 'images/14.jpg' %}" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-6 hod-right">
+            <h2>Publishing packages and web page</h2>
+            <p>The point of using as opposed to using 'Content here, content here', making it look like readable
+                English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default
+                model text, and a search for 'lorem ipsum' </p>
+            <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content
+                here, content here',</p>
+            <a class="hvr-shutter-in-horizontal" href="details.html">Book Now</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+-->
+<!-- hod -->
+<!-- tels -->
+<div class="tels">
+    <div class="container">
+        {% for room in rooms %}
+            <div class="col-md-4 tels-left">
+                <h4>{{ room.get_type_name }} <span>{{ room.price }}¥</span></h4>
+                <img src="{{ room.image }} " class="img-responsive" alt="">
+                <p>{{ room.desc }}</p>
+                <a class="hvr-shutter-in-horizontal" href="/order?type={{ room.type }}">订房</a>
+            </div>
+        {% endfor %}
+
+
+    </div>
+
+
+</body>
+</html>

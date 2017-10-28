@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Motel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErri/static/csson, Motorola web design"/>
+    <script type="applijewelleryion/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom Theme files -->
+    <link href="/static/css/style.css" rel='stylesheet' type='text/css'/>
+    <script src="/static/js/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+</head>
+<body>
+<!-- banner -->
+<div class="banner1">
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">酒店预订系统</a></h1>
+            </div>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!--/.navbar-header-->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'index' %}">首页</a></li>
+                    </ul>
+                </div>
+                <!--/.navbar-collapse-->
+            </nav>
+            <div class="search-box">
+                <div id="sb-search" class="sb-search">
+                    <form>
+                        <input class="sb-search-input" placeholder="Enter your search term..." type="search"
+                               name="search" id="search">
+                        <input class="sb-search-submit" type="submit" value="">
+                        <span class="sb-icon-search"> </span>
+                    </form>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <!-- search-scripts -->
+            <script src="/static/js/classie.js"></script>
+            <script src="/static/js/uisearch.js"></script>
+            <script>
+                new UISearch(document.getElementById('sb-search'));
+            </script>
+            <!-- //search-scripts -->
+
+        </div>
+    </div>
+</div>
+<!-- banner -->
+<!-- details -->
+<div class="details">
+    <div class="container">
+        <div class="col-md-7 details-left">
+            <img src="{{ room.image }}" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-5 details-right">
+            <span><strong>¥ {{ room.price }}</strong> {{ room.get_type_name }}</span>
+
+            <p> {{ room.desc }}</p>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="booking-form">
+            <div class="col-md-6">
+                <form id="jsStayForm">
+                    {% csrf_token %}
+                    <input type="hidden" name="type" value="{{ room.type }}"/>
+                    <h5>姓名</h5>
+                    <input type="text" value="" name="customer" id="customer">
+                    <h5>电话</h5>
+                    <input type="text" value="" name="phone" id="phone">
+                    <h5>入住时间</h5>
+                    {% ifequal flag "1" %}
+                    <select class="arrival" name="begin_day">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <select class="arrival" name="begin_month">
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select class="arrival" name="begin_year">
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                    </select>
+                    {% else %}
+                    <input type="text" name="begin_time" placeholder="时间" value="{{ begin_time }}"/>
+                    {% endifequal%}
+                    <h5>离店时间</h5>
+                    {% ifequal flag "1" %}
+                    <select class="arrival" name="end_day">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <select class="arrival" name="end_month">
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select class="arrival" name="end_year">
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                    </select>
+                    {% else %}
+                    <input type="text" placeholder="时间" name="end_time" value="{{ end_time }}"/>
+                    {% endifequal %}
+                    <h5 class="mem">订购数量</h5>
+                    <input min="1" type="number" id="quantity" name="count" value="1"
+                           class="form-control input-small">
+
+                    <input type="button" value="确认" id="jsStayBtn" class="btn-primary">
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#jsStayBtn').on('click', function () {
+            if ($('#customer').val().length < 1) {
+                $('#customer').focus();
+                alert("姓名格式错误");
+                return false;
+            }
+            if ($('#phone').val().length < 11) {
+                $('#phone').focus();
+                alert("手机号格式错误");
+                return false;
+            }
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "{% url "order" %}",
+                data: $('#jsStayForm').serialize(),
+                async: true,
+                success: function (data) {
+                    if (data.status == 'success') {
+                        $('#jsStayForm')[0].reset();
+                        alert("提交成功");
+                    } else if (data.status == 'fail') {
+                        alert(data.msg);
+                    }
+                }
+            });
+        });
+    })
+
+</script>
+
+
+</body>
+</html>
