@@ -121,9 +121,9 @@ STATICFILES_DIRS = (
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LLANGUAGE_CODE = 'zh-hans'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'Asia/shanghai'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
