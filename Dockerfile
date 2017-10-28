@@ -5,7 +5,7 @@ MAINTAINER victor
 
 ADD ./requirements.txt /tmp/requirements.txt
 
-RUN pip install -r /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 
 EXPOSE 8000
 
