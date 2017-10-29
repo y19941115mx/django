@@ -9,6 +9,11 @@
 2. source /etc/mysql/conf.d/mysqldata; 导入数据,注意后面有；符号不能忘
 3. exit 退出数据库程序
 
+# 无法访问
+1. 输入 docker-compose restart
+
+# Ubuntu 如果关机 重新启动命令
+上述内容重新来一遍
 
 # 查看项目
 在Ubuntu虚拟机中访问 http://127.0.0.1:8000/ 就可以看到项目了 啦啦啦！
