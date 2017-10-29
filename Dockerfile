@@ -1,4 +1,4 @@
-FROM hub.c.163.com/library/python:3
+FROM hub.c.163.com/library/python:latest
 ENV PYTHONUNBUFFERED 1
 
 MAINTAINER victor

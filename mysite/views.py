@@ -1,14 +1,14 @@
 from datetime import datetime
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
-from django.conf import settings
-from django.shortcuts import redirect
+# from django.urls import reverse
+# from django.conf import settings
+# from django.shortcuts import redirect
 
 
 
@@ -45,7 +45,7 @@ class LoginView(View):
             user = authenticate(username=user_name, password=pass_word)
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return redirect(reverse('index'))
             else:
                 return render(request, 'login.html', {'msg': '密码错误', 'login_form': login_form})
         else:
